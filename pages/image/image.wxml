@@ -1,0 +1,29 @@
+<!--image.wxml-->
+<view class="container">
+  <text>{{'AccelerometerX:'+AccelerometerX+' AccelerometerY:'+AccelerometerY+' AccelerometerZ:'+AccelerometerZ}}</text>
+  <image src="{{tempFilePaths[0]}}" wx:if="{{tempFilePaths[0]}}"></image>
+  <button type="primary"  bindtap="chooseImage"> 选择图片 </button>
+  <text>{{width ? '宽为'+width : ''}}</text><text>{{height ?  '高为'+height : ''}}</text>
+  <button type="primary"  bindtap="getLocation"> 获取地理位置 </button>
+  <text>{{name ? '您当前所在的位置是'+address+name : ''}}</text>
+
+  <button type="primary"  bindtap="getSystemInfo"> 获取系统信息 </button>
+  <text>{{model? '您的手机型号为'+ model :''}}</text>
+  <text>{{pixelRatio? '设备像素比'+ pixelRatio :''}}</text>
+  <text>{{screenWidth? '屏幕宽度'+ screenWidth :''}}</text>
+  <text>{{screenHeight? '屏幕高度'+ screenHeight :''}}</text>
+  <text>{{windowWidth? '可用窗口宽度'+ windowWidth :''}}</text>
+  <text>{{windowHeight? '可用窗口高度'+ windowHeight :''}}</text>
+  <text>{{version? '微信版本号'+ version :''}}</text>
+  <text>{{system? '操作系统版本'+ system :''}}</text>
+  <text>{{platform? '客户端平台'+ platform :''}}</text>
+  <text>{{SDKVersion? '客户端基础库版本'+ SDKVersion :''}}</text>
+
+
+  <button bindtap="shortVibrate">短震动</button>
+  <button bindtap="longVibrate">长震动</button>
+  <button bindtap="scanCode">扫码</button>
+  <button bindtap="callPhone">拨打电话扫码</button>
+  <button bindtap="getNetwork">获取当前网络状态</button>
+  <text>{{networkType ? '您当前的网络状态为'+networkType : ''}}</text>
+</view>
