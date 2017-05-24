@@ -1,6 +1,11 @@
+
+<import src="../common/nav.wxml"/>
+<import src="../common/list.wxml"/>
 <!--image.wxml-->
 <view class="container">
-  <text>{{'AccelerometerX:'+AccelerometerX+' AccelerometerY:'+AccelerometerY+' AccelerometerZ:'+AccelerometerZ}}</text>
+  <template is="nav" data="{{ navList, activeIndex }}"/>
+  <template is="list" data="{{ postsList, hidden,tab }}"/>
+  <text class="accelerometer">{{'AccelerometerX:'+AccelerometerX+' AccelerometerY:'+AccelerometerY+' AccelerometerZ:'+AccelerometerZ}}</text>
   <image src="{{tempFilePaths[0]}}" wx:if="{{tempFilePaths[0]}}"></image>
   <button type="primary"  bindtap="chooseImage"> 选择图片 </button>
   <text>{{width ? '宽为'+width : ''}}</text><text>{{height ?  '高为'+height : ''}}</text>

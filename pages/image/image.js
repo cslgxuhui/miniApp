@@ -1,9 +1,24 @@
 //index.js
 //获取应用实例
-var app = getApp()
+var app = getApp();
+var navList = [
+  { id: "origin", title:"原生API" },
+  { id: "list", title: "精华" },
+  { id: "share", title: "分享" },
+  { id: "ask", title: "问答" },
+  { id: "job", title: "招聘" }
+];
 Page({
   data: {
+    navList:navList,
     tempFilePaths:'',
+    postsList: [],
+    hidden:true,
+    activeIndex:0,
+    tab:'origin',
+    page:1,
+    limit:20,
+
     width:'',
     height:'',
     name:'',
@@ -150,6 +165,61 @@ Page({
         })
       }
     })
+  },
+
+  onTapTag:function(e){
+    var that = this;
+    var tab = e.currentTarget.id;
+    var index = e.currentTarget.dataset.index;
+    that.setData({
+      activeIndex: index,
+      tab: tab,
+      page: 1
+    });
+    if (tab !== 'origin') {
+      that.getData({ tab: tab });
+    } else {
+      that.getData();
+    }
+  },
+  getData:function() {
+    var that = this;
+    var page = that.data.page;
+    var tab = that.data.tab;
+    var limit = that.data.limit;
+    var url = 'https://1.happyyong.applinzi.com/data/' + tab+'.json'
+    that.setData({ hidden: false });
+    wx.request({
+      url:url,
+      data:{
+        tab,
+        page,
+        limit
+      },
+      success: function (res) {
+        console.log(res.data.data.account);
+        that.setData({
+          postsList: res.data.data.account
+        })
+      }
+    })
+    // if (page == 1) {
+    //   that.setData({ postsList: [] });
+    // }
+    setTimeout(function () {
+      that.setData({ hidden: true });
+    }, 300);
+  },
+  lower: function () {
+    console.log('滑动底部加载', new Date());
+    var that = this;
+    that.setData({
+      page: that.data.page + 1
+    });
+    if (that.data.tab !== 'origin') {
+      this.getData({ tab: that.data.tab, page: that.data.page });
+    } else {
+      this.getData({ page: that.data.page });
+    }
   }
-  
 })

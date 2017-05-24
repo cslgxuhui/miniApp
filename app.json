@@ -2,12 +2,45 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/image/image"
+    "pages/image/image",
+    "pages/me/me"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#ff0",
     "navigationBarTitleText": "虚无缥缈之旅",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#fff",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "white",
+    "backgroundColor": "#35495e",
+    "list": [
+      {
+        "pagePath": "pages/image/image",
+        "iconPath": "images/wechat.png",
+        "selectedIconPath": "images/wechatHL.png",
+        "text": "DEMO"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/homeHL.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "iconPath": "images/note.png",
+        "selectedIconPath": "images/noteHL.png",
+        "text": "日志"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/meHL.png",
+        "text": "个人"
+      }
+    ]
   }
 }

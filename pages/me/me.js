@@ -1,14 +1,17 @@
 //index.js
 //获取应用实例
-var app = getApp();
-
+var app = getApp()
 Page({
   data: {
     motto: '欢迎开启小程序之旅',
-    userInfo: {},
+    userInfo: {}
   },
   //事件处理函数
- 
+  bindViewTap: function() {
+    wx.navigateTo({
+      url: '../image/image'
+    })
+  },
   onLoad: function () {
     console.log('onLoad')
     var that = this

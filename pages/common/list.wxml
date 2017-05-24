@@ -1,0 +1,33 @@
+<!--列表list组件 -->
+<template name="list">
+<scroll-view class="scroll-posts-list"  scroll-y="true" style="height:100%"  bindscrolltolower="lower">
+  <view class="bar-info-item2"  wx:if="{{tab === 'origin'}}">
+    <image class="bar-info-item-icon" src="/images/me.png"></image>
+    <view class="bar-info-item-number">原生</view>
+      <view class="bar-info-item-number">{{item.title}}</view>
+  </view>    
+
+  <block  wx:if="{{tab === 'list'}}">
+    <view class="bar-info-item-number">精华</view>
+    <view wx:for="{{postsList}}" wx:key="{{item.index}}">
+      {{item.title}}
+    </view>
+  </block>
+
+  <view class="bar-info-item2"  wx:if="{{tab === 'share'}}">
+    <image class="bar-info-item-icon" src="/images/me.png"></image>
+    <view class="bar-info-item-number">分享</view>
+  </view>
+  <view class="bar-info-item2"  wx:if="{{tab === 'ask'}}">
+    <image class="bar-info-item-icon" src="/images/me.png"></image>
+    <view class="bar-info-item-number">问答</view>
+  </view>
+  <view class="bar-info-item2"  wx:if="{{tab === 'job'}}">
+    <image class="bar-info-item-icon" src="/images/me.png"></image>
+    <view class="bar-info-item-number">招聘</view>
+  </view>
+</scroll-view>
+  <loading class="loading" hidden="{{hidden}}">
+    <text class="loading-font">加载中...</text>
+  </loading>
+</template>
