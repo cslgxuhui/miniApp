@@ -1,5 +1,6 @@
-//index.js
+
 //获取应用实例
+var amapFile = require('../../libs/amap-wx.js');
 var app = getApp()
 Page({
   data: {
@@ -13,9 +14,19 @@ Page({
     })
   },
   onLoad: function () {
-    console.log('onLoad')
     var that = this
     //调用应用实例的方法获取全局数据
+    var myAmapFun = new amapFile.AMapWX({ key: '2616bc22783d83c9354880320d0af8a2' });
+    myAmapFun.getRegeo({
+      success: function (data) {
+        //成功回调
+        console.log(data)
+      },
+      fail: function (info) {
+        //失败回调
+        console.log(info)
+      }
+    });
     app.getUserInfo(function(userInfo){
       //更新数据
       that.setData({
